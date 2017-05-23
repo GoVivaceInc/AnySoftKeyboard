@@ -17,10 +17,12 @@
 package com.google.android.voiceime;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 
 /**
  * Service helper that connects the IME with the activity that triggers the recognition
@@ -29,6 +31,7 @@ import android.util.Log;
 public class ServiceHelper extends Service {
 
     private static final String TAG = "ServiceHelper";
+    private VoiceRecognitionTrigger mVoiceRecognitionTriggers;
 
     private final IBinder mBinder = new ServiceHelperBinder();
 
@@ -54,7 +57,7 @@ public class ServiceHelper extends Service {
     public void startRecognition(String languageLocale, Callback callback) {
         Log.i(TAG, "#startRecognition");
         mCallback = callback;
-        Intent intent = new Intent(this, ActivityHelper.class);
+        Intent intent = new Intent(this, DisplayMessageActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
@@ -62,8 +65,13 @@ public class ServiceHelper extends Service {
     public void notifyResult(String recognitionResult) {
         if (mCallback != null) {
             mCallback.onResult(recognitionResult);
+            /*InputMethodManager imm = (InputMethodManager)
+                    getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(EDITABLE_VIEW,
+                    InputMethodManager.SHOW_IMPLICIT);*/
         }
     }
+
 
     public interface Callback {
         void onResult(String recognitionResult);

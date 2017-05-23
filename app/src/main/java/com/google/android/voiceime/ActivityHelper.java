@@ -25,11 +25,14 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-
+import android.widget.Button;
+import android.widget.TextView;
+import android.content.Context;
 import com.menny.android.anysoftkeyboard.BuildConfig;
+import com.menny.android.anysoftkeyboard.R;
 
 import java.util.ArrayList;
-
+import android.net.Uri;
 /**
  * Helper activity used for triggering the Intent recognition, and for collecting the results.
  */
@@ -37,7 +40,7 @@ public class ActivityHelper extends Activity {
 
     @SuppressWarnings("unused")
     private static final String TAG = "ActivityHelper";
-
+    final Context context = this;
     private static final int RECOGNITION_REQUEST = 1;
 
     private ServiceBridge mServiceBridge;
@@ -117,4 +120,6 @@ public class ActivityHelper extends Activity {
         mServiceBridge.notifyResult(this, result);
         finish();
     }
+
+
 }

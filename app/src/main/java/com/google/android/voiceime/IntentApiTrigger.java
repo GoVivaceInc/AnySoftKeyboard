@@ -42,15 +42,15 @@ class IntentApiTrigger implements Trigger {
 
     private static final String TAG = "VoiceIntentApiTrigger";
 
-    private final InputMethodService mInputMethodService;
+    private  InputMethodService mInputMethodService;
 
-    private final ServiceBridge mServiceBridge;
+    private  ServiceBridge mServiceBridge;
 
     private String mLastRecognitionResult;
 
     private Set<Character> mUpperCaseChars;
 
-    private final Handler mHandler;
+    private  Handler mHandler;
 
     private IBinder mToken;
 
@@ -73,6 +73,8 @@ class IntentApiTrigger implements Trigger {
 
         mHandler = new Handler();
     }
+
+    
 
     @Override
     public void startVoiceRecognition(String language) {

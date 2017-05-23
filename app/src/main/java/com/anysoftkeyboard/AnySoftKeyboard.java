@@ -89,6 +89,8 @@ import com.anysoftkeyboard.utils.IMEUtil;
 import com.anysoftkeyboard.utils.Logger;
 import com.anysoftkeyboard.utils.ModifierKeyState;
 import com.anysoftkeyboard.utils.Workarounds;
+import com.google.android.voiceime.ServiceHelper;
+import com.google.android.voiceime.DisplayMessageActivity;
 import com.google.android.voiceime.VoiceRecognitionTrigger;
 import com.menny.android.anysoftkeyboard.AnyApplication;
 import com.menny.android.anysoftkeyboard.BuildConfig;
@@ -176,6 +178,7 @@ public abstract class AnySoftKeyboard extends AnySoftKeyboardWithQuickText imple
     private boolean mLastCharacterWasShifted = false;
     private InputMethodManager mInputMethodManager;
     private VoiceRecognitionTrigger mVoiceRecognitionTrigger;
+    private ServiceHelper serviceHelper=new ServiceHelper();
     private long mLastSpaceTimeStamp = NEVER_TIME_STAMP;
     private View mFullScreenExtractView;
     private EditText mFullScreenExtractTextView;
@@ -1273,10 +1276,9 @@ public abstract class AnySoftKeyboard extends AnySoftKeyboardWithQuickText imple
                 }
                 break;
             case KeyCodes.VOICE_INPUT:
-                if (mVoiceRecognitionTrigger.isInstalled()) {
-                    //mVoiceRecognitionTrigger.startVoiceRecognition(getCurrentAlphabetKeyboard().getDefaultDictionaryLocale());
-                    mVoiceRecognitionTrigger.connectWebSocket();
-                } else {
+                if (mVoiceRecognitionTrigger.isInstalled())
+                    mVoiceRecognitionTrigger.startVoiceRecognition(getCurrentAlphabetKeyboard().getDefaultDictionaryLocale());
+                else {
                     Intent voiceInputNotInstalledIntent = new Intent(getApplicationContext(), VoiceInputNotInstalledActivity.class);
                     voiceInputNotInstalledIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(voiceInputNotInstalledIntent);

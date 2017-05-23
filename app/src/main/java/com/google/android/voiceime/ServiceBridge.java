@@ -21,6 +21,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.anysoftkeyboard.utils.Logger;
 
@@ -66,10 +69,12 @@ class ServiceBridge {
     }
 
     public void notifyResult(Context context, String recognitionResult) {
+        Log.i(TAG,"#call notifyresult");
         ServiceConnection conn = new ConnectionResponse(context, recognitionResult);
         context.bindService(new Intent(context,
                 ServiceHelper.class), conn, Context.BIND_AUTO_CREATE);
     }
+
 
     /**
      * Service connection for requesting a recognition.

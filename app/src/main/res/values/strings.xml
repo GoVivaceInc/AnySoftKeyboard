@@ -669,5 +669,10 @@
     <string name="extension_keyboard_enabled_on_summary">Extension keyboard will be shown when swiping up above the keyboard.</string>
     <string name="read_our_privacy_policy">Read our Privacy Policy…</string>
     <string name="visit_our_web_site">Visit our web-site…</string>
+    <string name="api_not_available">API not available</string>
+    <string name="click_then_speak">Click Then Speak</string>
+    <string name="speak">Speak</string>
+    <string name="stop">Stop</string>
+    <string name="togglebutton">ToggleButton</string>
 
 </resources>

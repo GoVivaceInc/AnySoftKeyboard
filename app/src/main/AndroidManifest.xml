@@ -103,8 +103,11 @@
             android:icon="@mipmap/ic_ask_launcher"
             android:label="@string/ime_name">
         </activity>
+
         <!-- for voice -->
         <service android:name="com.google.android.voiceime.ServiceHelper"/>
+
+
 
         <activity
             android:name="com.google.android.voiceime.ActivityHelper"
@@ -118,6 +121,11 @@
             android:configChanges="keyboard|keyboardHidden|navigation|orientation"/>
         <activity
             android:name="com.anysoftkeyboard.ui.VoiceInputNotInstalledActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:icon="@mipmap/ic_ask_launcher"
+            android:label="@string/ime_name"/>
+        <activity
+            android:name="com.google.android.voiceime.DisplayMessageActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:icon="@mipmap/ic_ask_launcher"
             android:label="@string/ime_name"/>
